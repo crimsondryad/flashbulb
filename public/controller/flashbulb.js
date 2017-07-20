@@ -1,5 +1,7 @@
-var app = angular.module("myApp",[]);
-app.controller("appController",function($scope, $http) {
+var app = angular.module("flashbulb",[]);
+
+
+app.controller("flashbulbCtrl",function($scope, $http) {
 	$scope.messages = 
 	[
 		{
