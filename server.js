@@ -7,7 +7,7 @@ var fs = require("fs")
 
 
 //Store all JS and CSS in Scripts folder.
-app.listen(3000);
+app.listen(process.env.port)
 
 
 
