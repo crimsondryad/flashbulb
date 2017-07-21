@@ -63,12 +63,12 @@
 	</div>
 
 	
-		<textarea rows="10"  placeholder="{{placeholderMessage}}" id="inputbox" maxlength="500" ng-model="sendMessage"></textarea>
+		<textarea rows="10"  placeholder="{{placeholderMessage}}" id="inputbox" maxlength="500" ng-model="sendingMessage.content"></textarea>
 		<p class="text right"> {{500-sendMessage.length}} characters left</p>
 		<!-- use ng-model to bind the data -->
-		<textarea rows="5" placeholder="Send to..." id="sendbox"></textarea>
+		<textarea rows="5" placeholder="Send to..." id="sendbox" ng-model="sendingMessage.receiver"></textarea>
 	<!-- click the button, do the post to the api, with message.category, message.content, message.toUsers, message.sender -->
-	<button id="sendBtn" type="submit">Send</button>
+	<button id="sendBtn" type="submit" ng-click="sendMessage()">Send</button>
 	</div>
 </div>
 </div>

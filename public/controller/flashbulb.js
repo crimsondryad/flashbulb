@@ -95,4 +95,13 @@ app.controller("flashbulbCtrl",function($scope, $http) {
 	$scope.gotoIndex = function() {
 		location.replace("https://flashbulb-dev.azurewebsites.net/index.html")
 	}
+
+	$scope.sendMessage = function() {
+		$scope.sendingMessage.time = new Date()
+		$http.post('/sendMessage', $scope.sendingMessage)
+		.success(function(res) {
+			console.log(res);
+			location.replace("https://flashbulb-dev.azurewebsites.net/index.html");
+		})
+	}
 })
