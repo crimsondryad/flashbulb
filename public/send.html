@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>FlashBulb</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/ngDialog.min.css">
-	<link rel="stylesheet" href="css/ngDialog-theme-default.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-	<script type="text/javascript" src = "js/bootstrap.min.js"></script>
-	<script type="text/javascript" src = "controller/flashbulb.js"></script>
-</head>
-<body ng-app="flashbulb" ng-controller="flashbulbCtrl">
 
-	<div class="panel">
+
+	<div class="panel" ng-controller="flashbulbCtrl">
   <div class="headerContainer">
 		<div class="headerContent" >
 			<!-- click the button, go to the profile page-->
 			<!-- $window.location.href = 'http://www.google.com'-->
 			<img src="media/imgs/avata-woman.png" class="header-img left circle">
-			<span class="header-text right white" ng-click="gotoIndex()"> Cancel</span>
+			<a href="#/"><span class="header-text right white"> Cancel</span></a>
 		</div>
 	</div>
 	<div class="bodyContainer">
@@ -72,5 +54,3 @@
 	</div>
 </div>
 </div>
-</body>
-</html>

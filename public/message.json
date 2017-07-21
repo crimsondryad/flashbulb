@@ -1,5 +1,5 @@
-	[
-		{
+	{"message":
+		[{
 			"category": "fire",
 			"sender": {
 				"name": "Sansa Stark",
@@ -34,5 +34,6 @@
 			},
 			"time": "9:30 7/3",
 			"content": "here is the information"
-		}
-	]
+		},
+	{"content":"hello","receiver":"stark","category":"fire","sender":{"name":"Cindy Wei","avartar":"media/imgs/avata-woman.png"}}]
+	}
