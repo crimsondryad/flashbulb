@@ -75,7 +75,7 @@ app.controller("flashbulbCtrl",function($scope, $http) {
 
 	$scope.sendMessage = function() {
 		$scope.sendingMessage.category = $scope.selectedCategory
-		$scope.sendingMessage.sender={"name":"Cindy Wei","avartar": "media/imgs/avata-woman.png"}
+		$scope.sendingMessage.sender={"name":"Test Account","avartar": "media/imgs/avata-woman.png"}
 		console.log($scope.sendingMessage);
 		$http
 		({method: 'POST',
