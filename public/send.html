@@ -63,7 +63,7 @@
 	</div>
 
 	
-		<textarea rows="10"  placeholder="{{placeholderMessage}}" id="inputbox" maxlength="500" ng-model="sendingMessage.content"></textarea>
+		<textarea rows="10"  placeholder="{{placeholderMessage}}" id="inputbox" maxlength="230" ng-model="sendingMessage.content"></textarea>
 		<p class="text right"> {{230-sendingMessage.content.length}} characters left</p>
 		<!-- use ng-model to bind the data -->
 		<textarea rows="5" placeholder="Send to..." id="sendbox" ng-model="sendingMessage.receiver"></textarea>
