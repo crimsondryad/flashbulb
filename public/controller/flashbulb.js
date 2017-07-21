@@ -98,6 +98,7 @@ app.controller("flashbulbCtrl",function($scope, $http) {
 
 	$scope.sendMessage = function() {
 		$scope.sendingMessage.time = new Date()
+		$scope.sendingMessage.category = $scope.category
 		$http.post('/sendMessage', $scope.sendingMessage)
 		.success(function(res) {
 			console.log(res);
