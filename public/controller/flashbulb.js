@@ -1,6 +1,4 @@
 var app = angular.module("flashbulb",[]);
-
-
 app.controller("flashbulbCtrl",function($scope, $http) {
 	$scope.messages = 
 	[
@@ -54,4 +52,47 @@ app.controller("flashbulbCtrl",function($scope, $http) {
 				return "media/imgs/info.png";
 		}
 	};
+
+	$scope.getMessages = function (category) {
+		if ($scope.filterCategory && $scope.filterCategory == category) {
+			$scope.filterCategory = ""
+		} else {
+			$scope.filterCategory = category
+		}
+	};
+
+	$scope.getActive = function (category) {
+		return category == $scope.filterCategory
+	}
+
+	$scope.compose=function() {
+		location.replace("https://flashbulb-dev.azurewebsites.net/send.html");
+	}
+	//below are for send page
+	$scope.selectedCategory = "fire";
+	$scope.placeholderMessage = "What's the emergency?"
+	$scope.setCategory = function(category) {
+		$scope.selectedCategory = category;
+		$scope.placeholderMessage = "What's the emergency?"
+		switch(category) {
+			case "fire":
+				$scope.placeholderMessage = "What's the emergency?"
+				break;
+			case "blocker":
+				$scope.placeholderMessage = "What's the blocker?"
+				break;
+			case "goodNews":
+				$scope.placeholderMessage = "What's the good news you want to share?"
+				break;
+			case "info":
+				$scope.placeholderMessage = "What's the infomation you want to share?"
+		}
+		
+	};
+	$scope.isActiveForSend = function(category) {
+		return category == $scope.selectedCategory
+	};
+	$scope.gotoIndex = function() {
+		location.replace("https://flashbulb-dev.azurewebsites.net/index.html")
+	}
 })

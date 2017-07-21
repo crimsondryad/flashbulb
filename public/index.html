@@ -5,7 +5,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-	<link rel="stylesheet" href="css/mainCss.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/ngDialog.min.css">
 	<link rel="stylesheet" href="css/ngDialog-theme-default.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -17,24 +17,27 @@
 	<script type="text/javascript" src = "controller/flashbulb.js"></script>
 </head>
 <body ng-app="flashbulb" ng-controller="flashbulbCtrl">
-	
-	<div class="panel">
 
+	<div class="panel">
 		<div class="headerContainer">
 			<div class="headerContent row">
-				<img src="media/imgs/flashbulblogogold1.png" class="header-img left">
+				<div class="col" ng-click="compose()">
+					<img src="media/imgs/flashbulblogogold1.png" class="header-img left">
+				</div>
 				<!-- use filter -->
-				<input type="text" placeholder="Search" class="searchBar col-xs-8">
-				<img src="media/imgs/avata-woman.png" class="header-img circle right">
+				<input type="text" placeholder="Search" class="searchBar col-7" ng-model="searchText">
+				<div class="col">
+					<img src="media/imgs/avata-woman.png" class="header-img circle right">
+				</div>
 			</div>
 		</div>
-		<div class="navbar-iconGroup">
+		<div class="navbar-iconGroup container">
 			
 			<table class="table-center">
 				<tr>
 					<th>
 						<!-- these icons are clickable, will filter the messages according to the category -->
-						<div class="icon fire circle">
+						<div class="icon fire circle" ng-click="getMessages('fire')" ng-class="{'active':getActive('fire')}">
 							<img src="media/imgs/fire.png" class="icon-img">
 						</div>
 						<div class="fire-message">
@@ -43,8 +46,8 @@
 						</div>
 					</th>
 					<th>
-						<div class="icon blocker circle">
-							<img src="media/imgs/blocker.png" class="icon-img"">
+						<div class="icon blocker circle" ng-click="getMessages('blocker')" ng-class="{'active':getActive('blocker')}">
+							<img src="media/imgs/blocker.png" class="icon-img">
 						</div>
 						<div class="blocker-message">
 							Blocker</br>
@@ -52,7 +55,7 @@
 						</div>
 					</th>
 					<th>
-						<div class="icon goodNews circle">
+						<div class="icon goodNews circle" ng-click="getMessages('goodNews')" ng-class="{'active':getActive('goodNews')}">
 							<img src="media/imgs/goodnews.png" class="icon-img">
 						</div>
 						<div class="good-message">
@@ -61,8 +64,8 @@
 						</div>
 					</th>
 					<th>
-						<div class="icon info circle">
-							<img src="media/imgs/info.png" class="icon-img"">
+						<div class="icon info circle" ng-click="getMessages('info')" ng-class="{'active':getActive('info')}">
+							<img src="media/imgs/info.png" class="icon-img">
 						</div>
 						<div class="info-message">
 							FYI</br>
@@ -76,21 +79,19 @@
 		<div class="seperator">
 		  Most Recent
 		</div>
-
+	
 		<div class="bodyContainer">
 
 			<table class="message-table">
 			<!--order by category first and then time -->
-				<tr ng-repeat-start="message in messages">
+				<tr ng-repeat-start="message in messages | filter: searchText | filter: filterCategory">
 					<td>
 					<div class="icon circle small" ng-class="message.category">
 						<img ng-src="{{getCategoryImg(message.category)}}" class="icon-img small">
 					</div>
 					</td>
 					<td style="width: 40px">
-					<div>
 						<img ng-src="{{message.sender.avartar}}" class="icon small">
-					</div>
 					</td>
 					<td>
 						{{message.sender.name}}
@@ -101,7 +102,7 @@
 				</tr>
 				<tr>
 						<td></td>
-						<td colspan="4" style="padding-left:30px">{{message.content}}</td>
+						<td colspan="4" style="padding-left:0.4em">{{message.content}}</td>
 				</tr>
 				<tr ng-repeat-end="">
 					<td>

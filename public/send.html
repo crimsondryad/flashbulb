@@ -5,7 +5,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-	<link rel="stylesheet" href="css/mainCss.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/ngDialog.min.css">
 	<link rel="stylesheet" href="css/ngDialog-theme-default.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -24,36 +24,36 @@
 			<!-- click the button, go to the profile page-->
 			<!-- $window.location.href = 'http://www.google.com'-->
 			<img src="media/imgs/avata-woman.png" class="header-img left circle">
-			<span class="header-text right white"> Cancel</span>
+			<span class="header-text right white" ng-click="gotoIndex()"> Cancel</span>
 		</div>
 	</div>
 	<div class="bodyContainer">
 	<div class="navbar-iconGroup">
-			<p class="header-text">Please choose a category:</p>
+			<h4>Please choose a category:</h4>
 			<table class="table-center">
 			<tr>
 				<th>
 				<!--all the four icons are clickable, choose a type of the message
 				ng-click="setCategory('fire')"" -->
-					<div class="icon fire circle">
+					<div class="icon fire circle" ng-click="setCategory('fire')" ng-class="{'active': isActiveForSend('fire')}">
 						<img src="media/imgs/fire.png" class="icon-img">
 					</div>
 					<div class="fire-message">Firedrill</div>
 				</th>
 				<th>
-					<div class="icon blocker circle">
+					<div class="icon blocker circle" ng-click="setCategory('blocker')" ng-class="{'active': isActiveForSend('blocker')}">
 						<img src="media/imgs/blocker.png" class="icon-img"">
 					</div>
 					<div class="blocker-message">Blocker</div>
 				</th>
 				<th>
-					<div class="icon goodNews circle">
+					<div class="icon goodNews circle" ng-click="setCategory('goodNews')" ng-class="{'active': isActiveForSend('goodNews')}"> 
 						<img src="media/imgs/goodnews.png" class="icon-img">
 					</div>
 					<div class="good-message">Good News</div>
 				</th>
 				<th>
-					<div class="icon info circle">
+					<div class="icon info circle" ng-click="setCategory('info')" ng-class="{'active': isActiveForSend('info')}">
 						<img src="media/imgs/info.png" class="icon-img"">
 					</div>
 					<div class="info-message">FYI</div>
@@ -63,8 +63,8 @@
 	</div>
 
 	
-		<textarea rows="10"  placeholder="What's the emergency..." id="inputbox"></textarea>
-		<p class="text right"> 230 characters left</p>
+		<textarea rows="10"  placeholder="{{placeholderMessage}}" id="inputbox" maxlength="500" ng-model="sendMessage"></textarea>
+		<p class="text right"> {{500-sendMessage.length}} characters left</p>
 		<!-- use ng-model to bind the data -->
 		<textarea rows="5" placeholder="Send to..." id="sendbox"></textarea>
 	<!-- click the button, do the post to the api, with message.category, message.content, message.toUsers, message.sender -->
